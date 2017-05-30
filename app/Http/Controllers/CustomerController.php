@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
+use Illuminate\Support\Facades\Log;
 
 class CustomerController extends Controller
 {
@@ -23,7 +25,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view("customer.index");
+        Log::info("Called CustomerController->index");
+
+        $customers = Customer::all();
+
+        return view("customer.index", ['customers' => $customers]);
     }
 
     /**
@@ -33,7 +39,9 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        Log::info("Called CustomerController->create");
+
+        return view('customer.create');
     }
 
     /**
@@ -44,7 +52,11 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Log::info("Called CustomerController->store");
+
+        Customer::create($request->all());
+
+        return redirect()->route('customers.index');
     }
 
     /**

@@ -2,16 +2,34 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Customer Index</div>
-
-                <div class="panel-body">
-                    Panel Body
-                </div>
-            </div>
-        </div>
-    </div>
+    <a class="btn btn-default" href="{{ route('customers.create') }}">Add Customer</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                <th>Home Phone</th>
+                <th>Work Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($customers as $customer)
+                <tr>
+                    <td>{{ $customer->name }}</td>
+                    <td>{{ $customer->street }}</td>
+                    <td>{{ $customer->city }}</td>
+                    <td>{{ $customer->state }}</td>
+                    <td>{{ $customer->zipcode }}</td>
+                    <td>{{ $customer->home_phone }}</td>
+                    <td>{{ $customer->work_phone }}</td>
+                    <td>{{ $customer->email }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @endsection
