@@ -18,6 +18,19 @@ class CustomerController extends Controller
         $this->middleware('auth');
     }
 
+    public function validationRules() {
+        return [
+            'name' => 'required|unique:customers|max:100',
+            'street' => 'required|max:100',
+            'city' => 'required|max:100',
+            'state' => 'required|max:50',
+            'zipcode' => 'required|digits:5',
+            'home_phone' => 'required|max:15',
+            'work_phone' => 'nullable|max:15',
+            'email' => 'required|email|max:50'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,6 +66,8 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         Log::info("Called CustomerController->store");
+
+        $this->validate($request, $this->validationRules());
 
         Customer::create($request->all());
 
