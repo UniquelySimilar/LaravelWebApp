@@ -20,7 +20,7 @@ class CustomerController extends Controller
 
     public function validationRules() {
         return [
-            'name' => 'required|unique:customers|max:100',
+            'name' => 'required|max:100',
             'street' => 'required|max:100',
             'city' => 'required|max:100',
             'state' => 'required|max:50',
@@ -93,7 +93,11 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        Log::info("Called CustomerController->edit for id = " . $id);
+
+        $customer = Customer::find($id);
+
+        return view('customer.edit', ['customer' => $customer]);
     }
 
     /**
@@ -105,7 +109,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Log::info("Called CustomerController->update for id = " . $id);
+
+        $this->validate($request, $this->validationRules());
+
+        Customer::find($id)->update($request->all());
+
+        return redirect()->route('customers.index');
     }
 
     /**

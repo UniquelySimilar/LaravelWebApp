@@ -14,6 +14,7 @@
                 <th>Home Phone</th>
                 <th>Work Phone</th>
                 <th>Email</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,9 @@
                     <td>{{ $customer->home_phone }}</td>
                     <td>{{ $customer->work_phone }}</td>
                     <td>{{ $customer->email }}</td>
+                    <td>
+                        <a class="btn btn-default" href="{{ route('customers.edit', ['customer' => $customer->id]) }}">Edit</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
