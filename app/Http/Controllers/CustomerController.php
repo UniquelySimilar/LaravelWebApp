@@ -126,6 +126,10 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Log::info("Called CustomerController->destroy for id = " . $id);
+
+        Customer::destroy($id);
+
+        return redirect()->route('customers.index');
     }
 }

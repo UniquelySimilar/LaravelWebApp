@@ -15,6 +15,7 @@
                 <th>Work Phone</th>
                 <th>Email</th>
                 <th>&nbsp;</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,13 @@
                     <td>{{ $customer->email }}</td>
                     <td>
                         <a class="btn btn-default" href="{{ route('customers.edit', ['customer' => $customer->id]) }}">Edit</a>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ route('customers.destroy', ['customer' => $customer->id]) }}">
+                            {{ csrf_field() }}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="btn btn-default">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
