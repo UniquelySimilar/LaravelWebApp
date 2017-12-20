@@ -8,6 +8,7 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
+import 'jquery-ui/ui/widgets/dialog.js';
 
 require('bootstrap-sass');
 

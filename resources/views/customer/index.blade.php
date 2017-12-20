@@ -33,10 +33,10 @@
                         <a class="btn btn-default" href="{{ route('customers.edit', ['customer' => $customer->id]) }}">Edit</a>
                     </td>
                     <td>
-                        <form method="POST" action="{{ route('customers.destroy', ['customer' => $customer->id]) }}">
+                        <form action="{{ route('customers.destroy', ['customer' => $customer]) }}" method="POST">
                             {{ csrf_field() }}
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" class="btn btn-default">Delete</button>
+                            {{ method_field('DELETE') }}
+                            <input type="submit" class="btn btn-default btn-delete" value="Delete" >
                         </form>
                     </td>
                 </tr>
@@ -44,4 +44,33 @@
         </tbody>
     </table>
 </div>
+
+<div id="dialog-confirm">
+<div>
+
+<script>
+$(function() {
+    $('.btn-delete').click(function(event) {
+        event.preventDefault();
+        var parentForm = $(this).parent();
+
+        $( "#dialog-confirm" ).dialog({
+            title: 'Delete this customer?',
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            buttons: {
+                "Delete": function() {
+                    $( this ).dialog( "close" );
+                    parentForm.submit();
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    });
+});
+</script>
 @endsection

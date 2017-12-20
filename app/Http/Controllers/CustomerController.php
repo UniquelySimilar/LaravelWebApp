@@ -38,7 +38,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        Log::info("Called CustomerController->index");
+        //Log::info("Called CustomerController->index");
 
         $customers = Customer::all();
 
@@ -52,7 +52,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        Log::info("Called CustomerController->create");
+        //Log::info("Called CustomerController->create");
 
         return view('customer.create');
     }
@@ -65,7 +65,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info("Called CustomerController->store");
+        //Log::info("Called CustomerController->store");
 
         $this->validate($request, $this->validationRules());
 
@@ -93,7 +93,7 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        Log::info("Called CustomerController->edit for id = " . $id);
+        //Log::info("Called CustomerController->edit for id = " . $id);
 
         $customer = Customer::find($id);
 
@@ -109,7 +109,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Log::info("Called CustomerController->update for id = " . $id);
+        //Log::info("Called CustomerController->update for id = " . $id);
 
         $this->validate($request, $this->validationRules());
 
@@ -124,11 +124,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        Log::info("Called CustomerController->destroy for id = " . $id);
-
-        Customer::destroy($id);
+        $customer->delete();
 
         return redirect()->route('customers.index');
     }
