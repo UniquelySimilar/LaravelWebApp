@@ -25,8 +25,8 @@ class CustomerController extends Controller
             'city' => 'required|max:100',
             'state' => 'required|max:50',
             'zipcode' => 'required|digits:5',
-            'home_phone' => 'required|max:15',
-            'work_phone' => 'nullable|max:15',
+            'home_phone' => 'required|min:10|max:15',
+            'work_phone' => 'nullable|min:10|max:15',
             'email' => 'required|email|max:50'
         ];
     }
@@ -66,6 +66,14 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         //Log::info("Called CustomerController->store");
+
+        if ($request->has('home_phone')) {
+            $request['home_phone'] = preg_replace("/[^0-9]/", "", $request['home_phone']);
+        }
+
+        if ($request->has('work_phone')) {
+            $request['work_phone'] = preg_replace("/[^0-9]/", "", $request['work_phone']);
+        }
 
         $this->validate($request, $this->validationRules());
 
@@ -110,6 +118,14 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         //Log::info("Called CustomerController->update for id = " . $id);
+
+        if ($request->has('home_phone')) {
+            $request['home_phone'] = preg_replace("/[^0-9]/", "", $request['home_phone']);
+        }
+
+        if ($request->has('work_phone')) {
+            $request['work_phone'] = preg_replace("/[^0-9]/", "", $request['work_phone']);
+        }
 
         $this->validate($request, $this->validationRules());
 
