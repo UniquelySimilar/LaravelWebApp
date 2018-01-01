@@ -18,6 +18,7 @@ class CustomersTableSeeder extends Seeder
         $numRows = 100;
 
         for ($i = 1; $i <= $numRows; $i++) {
+            $paddedIndex = str_pad( (string) $i, 3, "0", STR_PAD_LEFT );
             $state = 'Colorado';
             $zipCode = '80027';
             $phone = '3031111111';
@@ -34,14 +35,14 @@ class CustomersTableSeeder extends Seeder
             }
 
             Customer::create([
-                'name'          => 'name' . $i,
-                'street'        => 'street',
-                'city'          => 'city',
+                'name'          => 'name' . $paddedIndex,
+                'street'        => 'street' . $paddedIndex,
+                'city'          => 'city' . $paddedIndex,
                 'state'         => $state,
                 'zipcode'       => $zipCode,
                 'home_phone'    => $phone,
                 'work_phone'    => $phone,
-                'email'         => 'name' . $i . '@example.com'
+                'email'         => 'name' . $paddedIndex . '@example.com'
             ]);
         }
     }
