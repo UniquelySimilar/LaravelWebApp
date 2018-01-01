@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <a class="btn btn-default" href="{{ route('customers.create') }}">Add Customer</a>
-    <table class="table table-striped">
+    <a class="btn btn-default" href="{{ route('customers.create') }}" style="margin-bottom: 10px;">Add Customer</a>
+    <table id="customer-table" class="table table-striped">
         <thead>
             <tr>
                 <th>Name</th>
@@ -50,6 +50,21 @@
 
 <script>
 $(function() {
+    $('#customer-table').dataTable({
+        columns: [
+            null,
+            {'orderable': false, 'searchable': false},
+            null,
+            null,
+            null,
+            {'orderable': false, 'searchable': false},
+            {'orderable': false, 'searchable': false},
+            null,
+            {'orderable': false, 'searchable': false},
+            {'orderable': false, 'searchable': false}
+        ]
+    });
+
     $('.btn-delete').click(function(event) {
         event.preventDefault();
         var parentForm = $(this).parent();

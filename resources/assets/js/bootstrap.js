@@ -10,6 +10,11 @@ window._ = require('lodash');
 window.$ = window.jQuery = require('jquery');
 import 'jquery-ui/ui/widgets/dialog.js';
 
+// require( 'datatables.net' )( window, $ );
+// require( 'datatables.net-bs' )( window, $ );
+require( 'datatables.net' );
+require( 'datatables.net-bs' );
+
 require('bootstrap-sass');
 
 /**
