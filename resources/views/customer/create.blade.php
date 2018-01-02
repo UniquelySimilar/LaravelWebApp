@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-	<form class="form-horizontal" method="POST" action="{{ route('customers.store') }}">
+<div id="create-container" class="container">
+
+    <!-- Test global single file Vue component
+	 <example></example>
+     -->
+
+	 <form class="form-horizontal" method="POST" action="{{ route('customers.store') }}">
 		
 		{{ csrf_field() }}
 
@@ -112,4 +117,11 @@
 		<a class="btn btn-default" href="{{ route('customers.index') }}">Cancel</a>
 	</form>
 </div>
+
+<script>
+	// new Vue({
+	// 	el: '#create-container'
+	// });
+</script>
+
 @endsection
