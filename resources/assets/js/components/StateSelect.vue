@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="state" class="col-md-2 col-md-offset-2 control-label">State</label>
         <div class="col-md-4">
-            <select id="state" name="state" v-model="selectedState">
+            <select id="state" name="state" v-model="selectedState" style="height: 36px;">
                 <option v-for="stateOption in stateOptions" :value="stateOption.value">{{ stateOption.label }}</option>
             </select>
         </div>

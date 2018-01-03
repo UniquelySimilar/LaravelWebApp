@@ -54250,6 +54250,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.selectedState),
       expression: "selectedState"
     }],
+    staticStyle: {
+      "height": "36px"
+    },
     attrs: {
       "id": "state",
       "name": "state"
