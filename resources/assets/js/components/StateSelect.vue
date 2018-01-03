@@ -1,14 +1,13 @@
 <template>
     <div class="form-group">
-        <label for="new-state" class="col-md-2 col-md-offset-2 control-label">Vue State</label>
+        <label for="state" class="col-md-2 col-md-offset-2 control-label">State</label>
         <div class="col-md-4">
-            <select id="new-state" name="new_state">
+            <select id="state" name="state" v-model="selected">
                 <option v-for="stateOption in stateOptions" :value="stateOption.value">{{ stateOption.label }}</option>
             </select>
         </div>
         <div class="col-md-4" style="padding-left: 0">
-            <span v-if="false" style="color: red;"></span>
-            <span v-else style="color: red; font-size: 2em;">*</span>
+            <span style="color: red; font-size: 2em;">*</span>
         </div>
     </div>
 </template>
@@ -17,6 +16,7 @@
     module.exports = {
         data: function() {
             return {
+                selected: 'CO',
                 stateOptions: [
                     { value: 'AL', label: 'Alabama' },
                     { value: 'AK', label: 'Alaska' },

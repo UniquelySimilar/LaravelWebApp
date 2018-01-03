@@ -46,22 +46,9 @@
 			</div>
 		</div>
 
-		<!-- Test global single file Vue component -->
+		<!-- Global single file Vue component -->
 		<state-select></state-select>
 
-		<div class="form-group">
-			<label for="old-state" class="col-md-2 col-md-offset-2 control-label">State</label>
-			<div class="col-md-4">
-				<input id="old-state" type="text" name="state" class="form-control" value="{{ old('state') }}">
-			</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('state'))
-					<span style="color: red;">{{ $errors->first('state') }}</span>
-				@else
-					<span style="color: red; font-size: 2em;">*</span>
-				@endif
-			</div>
-		</div>
 		<div class="form-group">
 			<label for="zipcode" class="col-md-2 col-md-offset-2 control-label">Zipcode</label>
 			<div class="col-md-4">

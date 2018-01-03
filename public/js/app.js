@@ -28752,11 +28752,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 module.exports = {
     data: function data() {
         return {
+            selected: 'CO',
             stateOptions: [{ value: 'AL', label: 'Alabama' }, { value: 'AK', label: 'Alaska' }, { value: 'AZ', label: 'Arizona' }, { value: 'AR', label: 'Arkansas' }, { value: 'CA', label: 'California' }, { value: 'CO', label: 'Colorado' }, { value: 'CT', label: 'Connecticut' }, { value: 'DE', label: 'Delaware' }, { value: 'FL', label: 'Florida' }, { value: 'GA', label: 'Georgia' }, { value: 'TX', label: 'Texas' }, { value: 'CO', label: 'Colorado' }, { value: 'TX', label: 'Texas' }, { value: 'CO', label: 'Colorado' }, { value: 'GA', label: 'Georgia' }, { value: 'HI', label: 'Hawaii' }, { value: 'ID', label: 'Idaho' }, { value: 'IL', label: 'Illinois' }, { value: 'IN', label: 'Indiana' }, { value: 'IA', label: 'Iowa' }, { value: 'KS', label: 'Kansas' }, { value: 'KY', label: 'Kentucky' }, { value: 'LA', label: 'Louisiana' }, { value: 'ME', label: 'Maine' }, { value: 'MD', label: 'Maryland' }, { value: 'MA', label: 'Massachusetts' }, { value: 'MI', label: 'Michigan' }, { value: 'MN', label: 'Minnesota' }, { value: 'MS', label: 'Mississippi' }, { value: 'MO', label: 'Missouri' }, { value: 'MT', label: 'Montana' }, { value: 'NE', label: 'Nebraska' }, { value: 'NV', label: 'Nevada' }, { value: 'NH', label: 'New Hampshire' }, { value: 'NJ', label: 'New Jersey' }, { value: 'NM', label: 'New Mexico' }, { value: 'NY', label: 'New York' }, { value: 'NC', label: 'North Carolina' }, { value: 'ND', label: 'North Dakota' }, { value: 'OH', label: 'Ohio' }, { value: 'OK', label: 'Oklahoma' }, { value: 'OR', label: 'Oregon' }, { value: 'PA', label: 'Pennsylvania' }, { value: 'RI', label: 'Rhode Island' }, { value: 'SC', label: 'South Carolina' }, { value: 'SD', label: 'South Dakota' }, { value: 'TN', label: 'Tennessee' }, { value: 'TX', label: 'Texas' }, { value: 'UT', label: 'Utah' }, { value: 'VT', label: 'Vermont' }, { value: 'VA', label: 'Virginia' }, { value: 'WA', label: 'Washington' }, { value: 'WV', label: 'West Virginia' }, { value: 'WI', label: 'Wisconsin' }, { value: 'WY', label: 'Wyoming' }]
         };
     }
@@ -54239,14 +54239,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', {
     staticClass: "col-md-2 col-md-offset-2 control-label",
     attrs: {
-      "for": "new-state"
+      "for": "state"
     }
-  }, [_vm._v("Vue State")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("State")]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.selected),
+      expression: "selected"
+    }],
     attrs: {
-      "id": "new-state",
-      "name": "new_state"
+      "id": "state",
+      "name": "state"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.selected = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
     }
   }, _vm._l((_vm.stateOptions), function(stateOption) {
     return _c('option', {
@@ -54254,22 +54271,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": stateOption.value
       }
     }, [_vm._v(_vm._s(stateOption.label))])
-  }))]), _vm._v(" "), _c('div', {
+  }))]), _vm._v(" "), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "col-md-4",
     staticStyle: {
       "padding-left": "0"
     }
-  }, [(false) ? _c('span', {
-    staticStyle: {
-      "color": "red"
-    }
-  }) : _c('span', {
+  }, [_c('span', {
     staticStyle: {
       "color": "red",
       "font-size": "2em"
     }
-  }, [_vm._v("*")])])])
-},staticRenderFns: []}
+  }, [_vm._v("*")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

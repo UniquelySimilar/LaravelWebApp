@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div id="edit-container" class="container">
 	<form class="form-horizontal" method="POST" action="{{ route('customers.update', ['customer' => $customer->id]) }}">
 		
 		{{ csrf_field() }}
@@ -47,19 +47,10 @@
 				@endif
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="state" class="col-md-2 col-md-offset-2 control-label">State</label>
-			<div class="col-md-4">
-				<input id="state" type="text" name="state" class="form-control" value="{{ old('state') ? old('state') : $customer->state }}">
-			</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('state'))
-					<span style="color: red;">{{ $errors->first('state') }}</span>
-				@else
-					<span style="color: red; font-size: 2em;">*</span>
-				@endif
-			</div>
-		</div>
+
+		<!-- Global single file Vue component -->
+		<state-select></state-select>
+
 		<div class="form-group">
 			<label for="zipcode" class="col-md-2 col-md-offset-2 control-label">Zipcode</label>
 			<div class="col-md-4">
@@ -114,4 +105,11 @@
 		<a class="btn btn-default" href="{{ route('customers.index') }}">Cancel</a>
 	</form>
 </div>
+
+<script>
+	new Vue({
+		el: '#edit-container'
+	});
+</script>
+
 @endsection

@@ -19,17 +19,17 @@ class CustomersTableSeeder extends Seeder
 
         for ($i = 1; $i <= $numRows; $i++) {
             $paddedIndex = str_pad( (string) $i, 3, "0", STR_PAD_LEFT );
-            $state = 'Colorado';
+            $state = 'CO';
             $zipCode = '80027';
             $phone = '3031111111';
             
             if ($i % 2 == 0) {
-                $state = 'Texas';
+                $state = 'TX';
                 $zipCode = '75225';
                 $phone = '2142222222';
             }
             else if ($i % 3 == 0) {
-                $state = 'Georgia';
+                $state = 'GA';
                 $zipCode = '30601';
                 $phone = '2033333333';
             }
