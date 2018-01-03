@@ -2,11 +2,6 @@
 
 @section('content')
 <div id="create-container" class="container">
-
-    <!-- Test global single file Vue component
-	 <example></example>
-     -->
-
 	 <form class="form-horizontal" method="POST" action="{{ route('customers.store') }}">
 		
 		{{ csrf_field() }}
@@ -50,10 +45,14 @@
 				@endif
 			</div>
 		</div>
+
+		<!-- Test global single file Vue component -->
+		<state-select></state-select>
+
 		<div class="form-group">
-			<label for="state" class="col-md-2 col-md-offset-2 control-label">State</label>
+			<label for="old-state" class="col-md-2 col-md-offset-2 control-label">State</label>
 			<div class="col-md-4">
-				<input id="state" type="text" name="state" class="form-control" value="{{ old('state') }}">
+				<input id="old-state" type="text" name="state" class="form-control" value="{{ old('state') }}">
 			</div>
 			<div class="col-md-4" style="padding-left: 0">
 				@if($errors->first('state'))
@@ -119,9 +118,9 @@
 </div>
 
 <script>
-	// new Vue({
-	// 	el: '#create-container'
-	// });
+	new Vue({
+		el: '#create-container'
+	});
 </script>
 
 @endsection

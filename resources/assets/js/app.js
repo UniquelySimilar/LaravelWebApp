@@ -14,6 +14,7 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('state-select', require('./components/StateSelect.vue'));
 
 // const app = new Vue({
 //     el: '#app'
