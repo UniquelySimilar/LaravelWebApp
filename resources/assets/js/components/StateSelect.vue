@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="state" class="col-md-2 col-md-offset-2 control-label">State</label>
         <div class="col-md-4">
-            <select id="state" name="state" v-model="selected">
+            <select id="state" name="state" v-model="selectedState">
                 <option v-for="stateOption in stateOptions" :value="stateOption.value">{{ stateOption.label }}</option>
             </select>
         </div>
@@ -14,9 +14,9 @@
 
 <script>
     module.exports = {
+        props: ['selectedState'],
         data: function() {
             return {
-                selected: 'CO',
                 stateOptions: [
                     { value: 'AL', label: 'Alabama' },
                     { value: 'AK', label: 'Alaska' },

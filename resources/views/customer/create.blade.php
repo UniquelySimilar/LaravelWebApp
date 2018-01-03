@@ -47,7 +47,7 @@
 		</div>
 
 		<!-- Global single file Vue component -->
-		<state-select></state-select>
+		<state-select selected-state="CO"></state-select>
 
 		<div class="form-group">
 			<label for="zipcode" class="col-md-2 col-md-offset-2 control-label">Zipcode</label>
