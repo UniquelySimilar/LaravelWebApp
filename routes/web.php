@@ -11,13 +11,6 @@
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-Route::get('/', 'CustomerController@index');
-
 // Register the typical authentication routes for an application
 // Illuminate/Support/Facades/Auth.php
 Auth::routes();
@@ -25,3 +18,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('customers', 'CustomerController');
+Route::get('/', function () {
+    return redirect()->route('customers.index');
+});
