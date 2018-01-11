@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
-use Illuminate\Support\Facades\Log;
 
 class CustomerController extends Controller
 {
@@ -38,7 +37,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //Log::info("Called CustomerController->index");
+        //\Log::info("Called CustomerController->index");
 
         $customers = Customer::all();
 
@@ -52,8 +51,6 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //Log::info("Called CustomerController->create");
-
         return view('customer.create');
     }
 
@@ -65,8 +62,6 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //Log::info("Called CustomerController->store");
-
         if ($request->has('home_phone')) {
             $request['home_phone'] = preg_replace("/[^0-9]/", "", $request['home_phone']);
         }
@@ -101,8 +96,6 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //Log::info("Called CustomerController->edit for id = " . $id);
-
         $customer = Customer::find($id);
 
         return view('customer.edit', ['customer' => $customer]);
@@ -117,8 +110,6 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Log::info("Called CustomerController->update for id = " . $id);
-
         if ($request->has('home_phone')) {
             $request['home_phone'] = preg_replace("/[^0-9]/", "", $request['home_phone']);
         }
