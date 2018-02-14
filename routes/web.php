@@ -15,7 +15,7 @@
 // Illuminate/Support/Facades/Auth.php
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'CustomerController@index');
 
 Route::resource('customers', 'CustomerController');
 Route::get('/', function () {
