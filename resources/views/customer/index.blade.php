@@ -65,7 +65,7 @@ $(function() {
         ]
     });
 
-    $('.btn-delete').click(function(event) {
+    $('#customer-table').on('click', '.btn-delete', function(event) {
         event.preventDefault();
         var parentForm = $(this).parent();
 
