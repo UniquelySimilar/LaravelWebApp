@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use App\Localclasses\Util;
 
 class CustomerController extends Controller
 {
+    protected $util;
+
     /**
      * Instantiate a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Util $util)
     {
         $this->middleware('auth');
+        $this->util = $util;
     }
 
     public function validationRules() {
@@ -63,11 +67,11 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         if ($request->has('home_phone')) {
-            $request['home_phone'] = preg_replace("/[^0-9]/", "", $request['home_phone']);
+            $request['home_phone'] = $this->util->removeNonNumericChars($request['home_phone']);
         }
 
         if ($request->has('work_phone')) {
-            $request['work_phone'] = preg_replace("/[^0-9]/", "", $request['work_phone']);
+            $request['work_phone'] = $this->util->removeNonNumericChars($request['work_phone']);
         }
 
         $this->validate($request, $this->validationRules());
@@ -111,11 +115,11 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->has('home_phone')) {
-            $request['home_phone'] = preg_replace("/[^0-9]/", "", $request['home_phone']);
+            $request['home_phone'] = $this->util->removeNonNumericChars($request['home_phone']);
         }
 
         if ($request->has('work_phone')) {
-            $request['work_phone'] = preg_replace("/[^0-9]/", "", $request['work_phone']);
+            $request['work_phone'] = $this->util->removeNonNumericChars($request['work_phone']);
         }
 
         $this->validate($request, $this->validationRules());
