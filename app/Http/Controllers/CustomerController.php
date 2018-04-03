@@ -98,10 +98,8 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
-        $customer = Customer::find($id);
-
         return view('customer.edit', ['customer' => $customer]);
     }
 
@@ -112,7 +110,7 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
         if ($request->has('home_phone')) {
             $request['home_phone'] = $this->util->removeNonNumericChars($request['home_phone']);
@@ -124,7 +122,7 @@ class CustomerController extends Controller
 
         $this->validate($request, $this->validationRules());
 
-        Customer::find($id)->update($request->all());
+        $customer->update($request->all());
 
         return redirect()->route('customers.index');
     }
