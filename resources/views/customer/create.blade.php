@@ -6,19 +6,16 @@
 		
 		{{ csrf_field() }}
 
-		<div class="form-group">
-			<label for="name" class="col-md-2 col-md-offset-2 control-label">Name</label>
-			<div class="col-md-4">
-				<input id="name" type="text" name="name" class="form-control" value="{{ old('name') }}">
-			</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('name'))
-					<span style="color: red;">{{ $errors->first('name') }}</span>
-				@else
-					<span style="color: red; font-size: 2em;">*</span>
-				@endif
-			</div>
-		</div>
+		@component('customer.components.text-input',
+			[
+				'inputId' => 'name',
+				'inputName' => 'name',
+				'inputLabel' => 'Name',
+				'oldValue' => old('name'),
+				'validationError' => $errors->first('name')
+			])
+		@endcomponent
+
 		<div class="form-group">
 			<label for="street" class="col-md-2 col-md-offset-2 control-label">Street</label>
 			<div class="col-md-4">
