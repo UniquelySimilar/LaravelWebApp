@@ -7,7 +7,9 @@
         @if($validationError)
             <span style="color: red;">{{ $validationError }}</span>
         @else
-            <span style="color: red; font-size: 2em;">*</span>
+            @if($required)
+                <span style="color: red; font-size: 2em;">*</span>
+            @endif
         @endif
     </div>
 </div>

@@ -12,90 +12,80 @@
 				'inputName' => 'name',
 				'inputLabel' => 'Name',
 				'oldValue' => old('name'),
-				'validationError' => $errors->first('name')
+				'validationError' => $errors->first('name'),
+				'required' => true
 			])
 		@endcomponent
 
-		<div class="form-group">
-			<label for="street" class="col-md-2 col-md-offset-2 control-label">Street</label>
-			<div class="col-md-4">
-				<input id="street" type="text" name="street" class="form-control" value="{{ old('street') }}">
-			</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('street'))
-					<span style="color: red;">{{ $errors->first('street') }}</span>
-				@else
-					<span style="color: red; font-size: 2em;">*</span>
-				@endif
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="city" class="col-md-2 col-md-offset-2 control-label">City</label>
-			<div class="col-md-4">
-				<input id="city" type="text" name="city" class="form-control" value="{{ old('city') }}">
-			</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('city'))
-					<span style="color: red;">{{ $errors->first('city') }}</span>
-				@else
-					<span style="color: red; font-size: 2em;">*</span>
-				@endif
-			</div>
-		</div>
+		@component('customer.components.text-input',
+			[
+				'inputId' => 'street',
+				'inputName' => 'street',
+				'inputLabel' => 'Street',
+				'oldValue' => old('street'),
+				'validationError' => $errors->first('street'),
+				'required' => true
+			])
+		@endcomponent
+
+		@component('customer.components.text-input',
+			[
+				'inputId' => 'city',
+				'inputName' => 'city',
+				'inputLabel' => 'City',
+				'oldValue' => old('city'),
+				'validationError' => $errors->first('city'),
+				'required' => true
+			])
+		@endcomponent
 
 		<!-- Global single file Vue component -->
 		<state-select selected-state="CO"></state-select>
 
-		<div class="form-group">
-			<label for="zipcode" class="col-md-2 col-md-offset-2 control-label">Zipcode</label>
-			<div class="col-md-4">
-				<input id="zipcode" type="text" name="zipcode" class="form-control" value="{{ old('zipcode') }}">
-			</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('zipcode'))
-					<span style="color: red;">{{ $errors->first('zipcode') }}</span>
-				@else
-					<span style="color: red; font-size: 2em;">*</span>
-				@endif
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="home-phone" class="col-md-2 col-md-offset-2 control-label">Home Phone</label>
-			<div class="col-md-4">
-				<input id="home-phone" type="text" name="home_phone" class="form-control" value="{{ old('home_phone') }}">
-			</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('home_phone'))
-					<span style="color: red;">{{ $errors->first('home_phone') }}</span>
-				@else
-					<span style="color: red; font-size: 2em;">*</span>
-				@endif
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="work-phone" class="col-md-2 col-md-offset-2 control-label">Work Phone</label>
-			<div class="col-md-4">
-				<input id="work-phone" type="text" name="work_phone" class="form-control" value="{{ old('work_phone') }}">
-			</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('work_phone'))
-					<span style="color: red;">{{ $errors->first('work_phone') }}</span>
-				@endif
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="email" class="col-md-2 col-md-offset-2 control-label">Email</label>
-			<div class="col-md-4">
-			<input id="email" type="email" name="email" class="form-control" value="{{ old('email') }}">
-				</div>
-			<div class="col-md-4" style="padding-left: 0">
-				@if($errors->first('email'))
-					<span style="color: red;">{{ $errors->first('email') }}</span>
-				@else
-					<span style="color: red; font-size: 2em;">*</span>
-				@endif
-			</div>
-		</div>
+		@component('customer.components.text-input',
+			[
+				'inputId' => 'zipcode',
+				'inputName' => 'zipcode',
+				'inputLabel' => 'Zipcode',
+				'oldValue' => old('zipcode'),
+				'validationError' => $errors->first('zipcode'),
+				'required' => true
+			])
+		@endcomponent
+
+		@component('customer.components.text-input',
+			[
+				'inputId' => 'home-phone',
+				'inputName' => 'home_phone',
+				'inputLabel' => 'Home Phone',
+				'oldValue' => old('home_phone'),
+				'validationError' => $errors->first('home_phone'),
+				'required' => true
+			])
+		@endcomponent
+
+		@component('customer.components.text-input',
+			[
+				'inputId' => 'work-phone',
+				'inputName' => 'work_phone',
+				'inputLabel' => 'Work Phone',
+				'oldValue' => old('work_phone'),
+				'validationError' => $errors->first('work_phone'),
+				'required' => false
+			])
+		@endcomponent
+
+		@component('customer.components.text-input',
+			[
+				'inputId' => 'email',
+				'inputName' => 'email',
+				'inputLabel' => 'Email',
+				'oldValue' => old('email'),
+				'validationError' => $errors->first('email'),
+				'required' => true
+			])
+		@endcomponent
+
 		<button type="submit" class="btn btn-default">Submit</button>
 		<a class="btn btn-default" href="{{ route('customers.index') }}">Cancel</a>
 	</form>
